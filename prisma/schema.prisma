@@ -1,0 +1,60 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")  
+}
+
+model User {
+  id            String     @id @default(cuid())
+  name          String?
+  email         String     @unique
+  password      String
+  hoursPerWeek  Int        @default(10)
+  currentSkills String[]
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+  roadmaps      Roadmap[]
+}
+
+model Roadmap {
+  id             String      @id @default(cuid())
+  title          String
+  jdText         String
+  targetRole     String
+  requiredSkills String[]
+  missingSkills  String[]
+  gapScore       Int
+  status         String      @default("active")
+  createdAt      DateTime    @default(now())
+  updatedAt      DateTime    @updatedAt
+  userId         String
+  user           User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  milestones     Milestone[]
+}
+
+model Milestone {
+  id          String     @id @default(cuid())
+  weekNumber  Int
+  skill       String
+  topics      String[]
+  hoursNeeded Int
+  isCompleted Boolean    @default(false)
+  completedAt DateTime?
+  createdAt   DateTime   @default(now())
+  roadmapId   String
+  roadmap     Roadmap    @relation(fields: [roadmapId], references: [id], onDelete: Cascade)
+  resources   Resource[]
+}
+
+model Resource {
+  id          String    @id @default(cuid())
+  title       String
+  url         String
+  type        String
+  createdAt   DateTime  @default(now())
+  milestoneId String
+  milestone   Milestone @relation(fields: [milestoneId], references: [id], onDelete: Cascade)
+}
