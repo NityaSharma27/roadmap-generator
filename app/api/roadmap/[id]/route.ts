@@ -1,10 +1,8 @@
-// app/api/roadmap/[id]/route.ts
 import { NextRequest, NextResponse } from "next/server"
 import { getServerSession } from "next-auth"
 import { authOptions } from "@/lib/auth"
 import prisma from "@/lib/prisma"
 
-// GET — fetch a single roadmap
 export async function GET(
   req: NextRequest,
   context: { params: Promise<{ id: string }> }
@@ -18,7 +16,6 @@ export async function GET(
       )
     }
 
-    // Next.js 16 requires awaiting params
     const { id } = await context.params
 
     const roadmap = await prisma.roadmap.findUnique({
@@ -49,7 +46,6 @@ export async function GET(
   }
 }
 
-// DELETE — delete a roadmap
 export async function DELETE(
   req: NextRequest,
   context: { params: Promise<{ id: string }> }

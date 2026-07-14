@@ -1,4 +1,3 @@
-// app/page.tsx
 import Link from "next/link"
 import Navbar from "@/components/layout/Navbar"
 
@@ -134,7 +133,6 @@ export default function HomePage() {
           </p>
         </section>
 
-        {/* ── Scrolling Skills Ticker ── */}
         <div style={{
           overflow: "hidden",
           borderTop: "1px solid var(--border)",
@@ -321,7 +319,6 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ── CTA Banner ── */}
         <section style={{ maxWidth: "900px", margin: "0 auto 100px", padding: "0 24px" }}>
           <div style={{
             background: "linear-gradient(135deg, var(--dark) 0%, var(--mid) 100%)",
@@ -332,7 +329,6 @@ export default function HomePage() {
             position: "relative",
             overflow: "hidden"
           }}>
-            {/* Background decoration */}
             <div style={{
               position: "absolute",
               top: "-50px", right: "-50px",

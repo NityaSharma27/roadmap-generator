@@ -1,4 +1,3 @@
-// components/roadmap/ProgressChart.tsx
 "use client"
 
 import {

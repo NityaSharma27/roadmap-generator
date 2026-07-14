@@ -1,4 +1,3 @@
-// app/roadmap/new/page.tsx
 "use client"
 
 import { useState } from "react"
@@ -119,7 +118,6 @@ export default function NewRoadmapPage() {
               />
             </div>
 
-            {/* Hours */}
             <div className="glass-card animate-fade-up-delay-3" style={{ padding: "24px" }}>
               <h2 style={{
                 fontFamily: "Syne, sans-serif",

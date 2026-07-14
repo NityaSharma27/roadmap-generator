@@ -1,4 +1,3 @@
-// app/roadmap/[id]/page.tsx
 "use client"
 
 import { useEffect, useState } from "react"
@@ -145,7 +144,6 @@ export default function RoadmapPage() {
         <main style={{ maxWidth: "900px", margin: "0 auto", padding: "48px 24px" }}>
           {/* Header */}
 
-          {/* Header */}
           <div className="animate-fade-up" style={{
             display: "flex",
             justifyContent: "space-between",
@@ -168,7 +166,6 @@ export default function RoadmapPage() {
               </p>
             </div>
 
-            {/* buttons row */}
             <div style={{ display: "flex", gap: "10px" }}>
               <button
                 onClick={() => router.push("/dashboard")}

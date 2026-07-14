@@ -1,14 +1,11 @@
-// app/api/auth/register/route.ts
 import { NextRequest, NextResponse } from "next/server"
 import bcrypt from "bcryptjs"
 import prisma from "@/lib/prisma"
 
 export async function POST(req: NextRequest) {
   try {
-    // Step 1: get data from request body
     const { name, email, password } = await req.json()
 
-    // Step 2: validate input
     if (!name || !email || !password) {
       return NextResponse.json(
         { error: "All fields are required" },
@@ -16,7 +13,6 @@ export async function POST(req: NextRequest) {
       )
     }
 
-    // Step 3: check if user already exists
     const existingUser = await prisma.user.findUnique({
       where: { email }
     })
@@ -28,11 +24,8 @@ export async function POST(req: NextRequest) {
       )
     }
 
-    // Step 4: hash the password (never store plain text passwords)
-    // 12 = how strong the hashing is
     const hashedPassword = await bcrypt.hash(password, 12)
 
-    // Step 5: create user in database
     const user = await prisma.user.create({
       data: {
         name,
@@ -41,7 +34,6 @@ export async function POST(req: NextRequest) {
       }
     })
 
-    // Step 6: return success (never return the password)
     return NextResponse.json({
       message: "Account created successfully",
       user: {

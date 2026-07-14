@@ -1,13 +1,11 @@
-// lib/gap-score.ts
 import { GapScoreResult } from "@/types/index"
 
 export function calculateGapScore(
-  requiredSkills: string[],  // skills from JD
-  userSkills: string[]       // skills user said they know
+  requiredSkills: string[],  
+  userSkills: string[]       
 ): GapScoreResult {
 
-  // normalize everything to lowercase for fair comparison
-  // "React" and "react" should be treated the same
+  
   const normalizedRequired = requiredSkills.map(s => s.toLowerCase().trim())
   const normalizedUser = userSkills.map(s => s.toLowerCase().trim())
 
@@ -22,7 +20,6 @@ export function calculateGapScore(
   )
 
   // calculate gap percentage
-  // if JD needs 10 skills and user knows 3, gap = 70%
   const gapScore = Math.round(
     (missingSkills.length / requiredSkills.length) * 100
   )

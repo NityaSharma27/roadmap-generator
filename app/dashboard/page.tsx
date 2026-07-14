@@ -1,4 +1,3 @@
-// app/dashboard/page.tsx
 "use client"
 
 import { useEffect, useState } from "react"
@@ -101,7 +100,6 @@ export default function DashboardPage() {
             </Link>
           </div>
 
-          {/* Empty state */}
           {roadmaps.length === 0 ? (
             <div className="glass-card animate-fade-up-delay-1" style={{
               textAlign: "center",

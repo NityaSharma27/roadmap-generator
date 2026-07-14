@@ -1,4 +1,3 @@
-// app/api/roadmap/reshuffle/route.ts
 import { NextRequest, NextResponse } from "next/server"
 import { getServerSession } from "next-auth"
 import { authOptions } from "@/lib/auth"
@@ -25,7 +24,6 @@ export async function POST(req: NextRequest) {
       )
     }
 
-    // Step 1: fetch the full roadmap with all milestones
     const roadmap = await prisma.roadmap.findUnique({
       where: { id: roadmapId },
       include: {
@@ -43,11 +41,10 @@ export async function POST(req: NextRequest) {
       )
     }
 
-    // Step 2: separate completed and incomplete milestones
     const completedMilestones = roadmap.milestones.filter(m => m.isCompleted)
     const incompleteMilestones = roadmap.milestones.filter(m => !m.isCompleted)
 
-    // if everything is completed no reshuffling needed
+   
     if (incompleteMilestones.length === 0) {
       return NextResponse.json({
         message: "All milestones completed — no reshuffling needed",
@@ -55,23 +52,18 @@ export async function POST(req: NextRequest) {
       })
     }
 
-    // Step 3: get user for hoursPerWeek
     const user = await prisma.user.findUnique({
       where: { email: session.user.email }
     })
 
-    // Step 4: get incomplete skills to regenerate
     const incompleteSkills = incompleteMilestones.map(m => m.skill)
 
-    // Step 5: call Groq to regenerate only incomplete weeks
     const reshuffledData = await generateRoadmap(
       incompleteSkills,
       roadmap.targetRole,
       user?.hoursPerWeek || 10
     )
 
-    // Step 6: delete only incomplete milestones and their resources
-    // keep completed milestones untouched
     const incompleteMilestoneIds = incompleteMilestones.map(m => m.id)
 
     await prisma.resource.deleteMany({
@@ -82,8 +74,6 @@ export async function POST(req: NextRequest) {
       where: { id: { in: incompleteMilestoneIds } }
     })
 
-    // Step 7: create new reshuffled milestones
-    // week numbers continue from where completed ones left off
     const startingWeek = completedMilestones.length + 1
 
     await prisma.milestone.createMany({
@@ -97,7 +87,6 @@ export async function POST(req: NextRequest) {
       }))
     })
 
-    // Step 8: add resources to each new milestone
     const newMilestones = await prisma.milestone.findMany({
       where: {
         roadmapId: roadmap.id,
@@ -118,7 +107,6 @@ export async function POST(req: NextRequest) {
       })
     }
 
-    // Step 9: return updated roadmap
     const updatedRoadmap = await prisma.roadmap.findUnique({
       where: { id: roadmapId },
       include: {

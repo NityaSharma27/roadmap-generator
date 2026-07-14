@@ -1,8 +1,4 @@
-// lib/resources.ts
-
-// Real, verified learning resources for common skills
 const resourceMap: Record<string, { title: string; url: string; type: string }[]> = {
-  // Frontend
   "react": [
     { title: "React Official Docs", url: "https://react.dev", type: "docs" },
     { title: "React Full Course - freeCodeCamp", url: "https://www.youtube.com/watch?v=bMknfKXIFA8", type: "video" },
@@ -38,7 +34,6 @@ const resourceMap: Record<string, { title: string; url: string; type: string }[]
     { title: "Tailwind CSS Full Course - freeCodeCamp", url: "https://www.youtube.com/watch?v=ft30zcMlFa8", type: "video" }
   ],
 
-  // Backend
   "node.js": [
     { title: "Node.js Official Docs", url: "https://nodejs.org/en/docs", type: "docs" },
     { title: "Node.js Full Course - freeCodeCamp", url: "https://www.youtube.com/watch?v=Oe421EPjeBE", type: "video" },
@@ -62,7 +57,6 @@ const resourceMap: Record<string, { title: string; url: string; type: string }[]
     { title: "FastAPI Course - freeCodeCamp", url: "https://www.youtube.com/watch?v=0sOvCWFmrtA", type: "video" }
   ],
 
-  // Database
   "sql": [
     { title: "SQL Tutorial - W3Schools", url: "https://www.w3schools.com/sql", type: "article" },
     { title: "SQL Full Course - freeCodeCamp", url: "https://www.youtube.com/watch?v=HXV3zeQKqGY", type: "video" }
@@ -80,7 +74,6 @@ const resourceMap: Record<string, { title: string; url: string; type: string }[]
     { title: "MySQL Full Course - freeCodeCamp", url: "https://www.youtube.com/watch?v=7S_tz1z_5bA", type: "video" }
   ],
 
-  // DevOps & Tools
   "git": [
     { title: "Git Official Docs", url: "https://git-scm.com/doc", type: "docs" },
     { title: "Git Full Course - freeCodeCamp", url: "https://www.youtube.com/watch?v=RGOj5yH7evk", type: "video" },
@@ -99,7 +92,6 @@ const resourceMap: Record<string, { title: string; url: string; type: string }[]
     { title: "AWS Full Course - freeCodeCamp", url: "https://www.youtube.com/watch?v=ulprqHHWlng", type: "video" }
   ],
 
-  // AI/ML
   "machine learning": [
     { title: "ML Course - Andrew Ng Coursera", url: "https://www.coursera.org/learn/machine-learning", type: "course" },
     { title: "ML Full Course - freeCodeCamp", url: "https://www.youtube.com/watch?v=NWONeJKn6kc", type: "video" }
@@ -117,7 +109,6 @@ const resourceMap: Record<string, { title: string; url: string; type: string }[]
     { title: "PyTorch Full Course - freeCodeCamp", url: "https://www.youtube.com/watch?v=c36lUUr864M", type: "video" }
   ],
 
-  // DSA
   "data structures": [
     { title: "DSA Full Course - freeCodeCamp", url: "https://www.youtube.com/watch?v=8hly31xKli0", type: "video" },
     { title: "DSA - GeeksForGeeks", url: "https://www.geeksforgeeks.org/data-structures", type: "article" }
@@ -152,17 +143,14 @@ const defaultResources = (skill: string) => [
 ]
 
 export function getResourcesForSkill(skill: string) {
-  // try exact match first
   const key = skill.toLowerCase().trim()
   if (resourceMap[key]) return resourceMap[key]
 
-  // try partial match
   for (const mapKey of Object.keys(resourceMap)) {
     if (key.includes(mapKey) || mapKey.includes(key)) {
       return resourceMap[mapKey]
     }
   }
 
-  // fallback to default
   return defaultResources(skill)
 }

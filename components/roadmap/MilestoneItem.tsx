@@ -1,4 +1,3 @@
-// components/roadmap/MilestoneItem.tsx
 "use client"
 
 import { useState } from "react"

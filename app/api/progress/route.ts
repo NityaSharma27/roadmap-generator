@@ -1,4 +1,3 @@
-// app/api/progress/route.ts
 import { NextRequest, NextResponse } from "next/server"
 import { getServerSession } from "next-auth"
 import { authOptions } from "@/lib/auth"
@@ -14,7 +13,6 @@ export async function POST(req: NextRequest) {
       )
     }
 
-    // get milestone id and completion status from request
     const { milestoneId, isCompleted } = await req.json()
 
     if (!milestoneId) {
@@ -24,12 +22,10 @@ export async function POST(req: NextRequest) {
       )
     }
 
-    // update milestone completion status
     const milestone = await prisma.milestone.update({
       where: { id: milestoneId },
       data: {
         isCompleted,
-        // if marking complete, save the time. if unchecking, clear it
         completedAt: isCompleted ? new Date() : null
       }
     })
@@ -47,7 +43,6 @@ export async function POST(req: NextRequest) {
   }
 }
 
-// GET — fetch all roadmaps for logged in user
 export async function GET(req: NextRequest) {
   try {
     const session = await getServerSession(authOptions)

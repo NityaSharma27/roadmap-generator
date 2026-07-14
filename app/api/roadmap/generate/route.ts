@@ -1,4 +1,3 @@
-// app/api/roadmap/generate/route.ts
 import { NextRequest, NextResponse } from "next/server"
 import { getServerSession } from "next-auth"
 import { authOptions } from "@/lib/auth"
@@ -37,23 +36,19 @@ export async function POST(req: NextRequest) {
       )
     }
 
-    // Step 1: extract skills from JD
     const extractedData = await extractSkillsFromJD(jdText)
 
-    // Step 2: calculate gap
     const gapResult = calculateGapScore(
       extractedData.requiredSkills,
       currentSkills || user.currentSkills
     )
 
-    // Step 3: generate roadmap
     const roadmapData = await generateRoadmap(
       gapResult.missingSkills,
       extractedData.targetRole,
       hoursPerWeek || user.hoursPerWeek
     )
 
-    // Step 4: save to database with real resources from our mapper
     const roadmap = await prisma.roadmap.create({
       data: {
         title: `${extractedData.targetRole} Roadmap`,
@@ -69,7 +64,6 @@ export async function POST(req: NextRequest) {
             skill: milestone.skill,
             topics: milestone.topics,
             hoursNeeded: milestone.hoursNeeded,
-            // use our real resource mapper instead of AI-generated URLs
             resources: {
               create: getResourcesForSkill(milestone.skill)
             }

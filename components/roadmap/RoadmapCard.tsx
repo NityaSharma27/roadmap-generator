@@ -1,4 +1,3 @@
-// components/roadmap/RoadmapCard.tsx
 "use client"
 
 import Link from "next/link"
@@ -25,7 +24,6 @@ export default function RoadmapCard({ roadmap }: RoadmapCardProps) {
           backdropFilter: "blur(12px)",
           position: "relative",
           overflow: "hidden",
-          // completed = warm peach glow, active = standard card
           background: isCompleted
             ? "linear-gradient(135deg, rgba(236,184,165,0.15), rgba(228,154,176,0.12))"
             : "rgba(45,21,40,0.6)",
@@ -46,7 +44,6 @@ export default function RoadmapCard({ roadmap }: RoadmapCardProps) {
           el.style.boxShadow = "none"
         }}
       >
-        {/* Completed glow orb in corner */}
         {isCompleted && (
           <div style={{
             position: "absolute",
@@ -151,7 +148,6 @@ export default function RoadmapCard({ roadmap }: RoadmapCardProps) {
           </div>
         </div>
 
-        {/* Completed banner */}
         {isCompleted && (
           <div style={{
             background: "rgba(9,188,138,0.1)",

@@ -1,4 +1,3 @@
-// components/ui/Input.tsx
 "use client"
 
 interface InputProps {
