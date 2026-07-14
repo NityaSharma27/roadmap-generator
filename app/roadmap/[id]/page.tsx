@@ -19,6 +19,7 @@ export default function RoadmapPage() {
   const [roadmap, setRoadmap] = useState<Roadmap | null>(null)
   const [isLoading, setIsLoading] = useState(true)
   const [isReshuffling, setIsReshuffling] = useState(false)
+  const [isDeleting, setIsDeleting] = useState(false)
   const [reshuffleMsg, setReshuffleMsg] = useState("")
 
   useEffect(() => {
@@ -40,6 +41,28 @@ export default function RoadmapPage() {
       setIsLoading(false)
     }
   }
+
+  async function handleDelete() {
+    const confirmed = window.confirm(
+      "Are you sure you want to delete this roadmap? This cannot be undone."
+    )
+    if (!confirmed) return
+
+    setIsDeleting(true)
+    try {
+      const res = await fetch(`/api/roadmap/${id}`, {
+        method: "DELETE"
+      })
+      if (res.ok) {
+        router.push("/dashboard")
+      }
+    } catch {
+      console.error("Failed to delete roadmap")
+    } finally {
+      setIsDeleting(false)
+    }
+  }
+
 
   async function handleReshuffle() {
     setIsReshuffling(true)
@@ -121,6 +144,8 @@ export default function RoadmapPage() {
 
         <main style={{ maxWidth: "900px", margin: "0 auto", padding: "48px 24px" }}>
           {/* Header */}
+
+          {/* Header */}
           <div className="animate-fade-up" style={{
             display: "flex",
             justifyContent: "space-between",
@@ -142,18 +167,29 @@ export default function RoadmapPage() {
                 Target: {roadmap.targetRole}
               </p>
             </div>
-            <button
-              onClick={() => router.push("/dashboard")}
-              className="ghost-button"
-              style={{
-                padding: "10px 20px",
-                fontSize: "13px",
-                fontWeight: 500,
-                letterSpacing: "0.02em"
-              }}
-            >
-              ← Back
-            </button>
+
+            {/* buttons row */}
+            <div style={{ display: "flex", gap: "10px" }}>
+              <button
+                onClick={() => router.push("/dashboard")}
+                className="ghost-button"
+                style={{ padding: "10px 20px", fontSize: "13px" }}
+              >
+                ← Back
+              </button>
+              <button
+                onClick={handleDelete}
+                className="ghost-button"
+                style={{
+                  padding: "10px 20px",
+                  fontSize: "13px",
+                  color: "#f87171",
+                  borderColor: "rgba(248,113,113,0.3)"
+                }}
+              >
+                🗑 Delete
+              </button>
+            </div>
           </div>
 
           {/* Stats */}

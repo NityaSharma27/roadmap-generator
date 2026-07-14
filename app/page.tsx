@@ -387,7 +387,7 @@ export default function HomePage() {
           textAlign: "center"
         }}>
           <p style={{ color: "var(--text-muted)", fontSize: "13px" }}>
-            Built with ❤️ for students · RoadmapAI © 2026
+            RoadmapAI © 2026
           </p>
         </footer>
       </div>

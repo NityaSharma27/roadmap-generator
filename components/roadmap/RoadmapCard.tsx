@@ -55,7 +55,7 @@ export default function RoadmapCard({ roadmap }: RoadmapCardProps) {
             width: "100px",
             height: "100px",
             borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(236,207,195,0.3) 0%, transparent 70%)",
+            background: "radial-gradient(circle, rgba(9,188,138,0.2) 0%, transparent 70%)",
             pointerEvents: "none"
           }} />
         )}
@@ -88,12 +88,12 @@ export default function RoadmapCard({ roadmap }: RoadmapCardProps) {
             letterSpacing: "0.05em",
             textTransform: "uppercase",
             background: isCompleted
-              ? "rgba(236,184,165,0.2)"
-              : "rgba(228,154,176,0.12)",
-            color: isCompleted ? "#ecb8a5" : "#e49ab0",
+              ? "rgba(9,188,138,0.2)"
+              : "rgba(117,221,221,0.1)",
+            color: isCompleted ? "#09bc8a" : "#75dddd",
             border: isCompleted
-              ? "1px solid rgba(236,184,165,0.35)"
-              : "1px solid rgba(228,154,176,0.2)"
+              ? "1px solid rgba(9,188,138,0.35)"
+              : "1px solid rgba(117,221,221,0.2)"
           }}>
             {isCompleted ? "✓ Done" : "Active"}
           </span>
@@ -107,7 +107,7 @@ export default function RoadmapCard({ roadmap }: RoadmapCardProps) {
         }}>
           Gap score:{" "}
           <span style={{
-            color: isCompleted ? "#ecb8a5" : "#e49ab0",
+            color: isCompleted ? "#09bc8a" : "#75dddd",
             fontWeight: 600
           }}>
             {roadmap.gapScore}%
@@ -133,22 +133,20 @@ export default function RoadmapCard({ roadmap }: RoadmapCardProps) {
             </span>
           </div>
           <div style={{
-            background: "rgba(255,255,255,0.06)",
+            background: "rgba(9,188,138,0.15)",
             borderRadius: "100px",
             height: "5px",
             overflow: "hidden"
           }}>
             <div style={{
               background: isCompleted
-                ? "linear-gradient(90deg, #ecb8a5, #eccfc3)"
-                : "linear-gradient(90deg, var(--mid), var(--accent))",
+                ? "linear-gradient(90deg, #09bc8a, #75dddd)"
+                : "linear-gradient(90deg, #09bc8a, #0fd49c)",
               height: "100%",
               width: `${percentage}%`,
               borderRadius: "100px",
               transition: "width 0.5s ease",
-              boxShadow: isCompleted
-                ? "0 0 8px rgba(236,184,165,0.5)"
-                : "0 0 8px rgba(228,154,176,0.4)"
+              boxShadow: "0 0 8px rgba(9,188,138,0.5)"
             }} />
           </div>
         </div>
@@ -156,13 +154,13 @@ export default function RoadmapCard({ roadmap }: RoadmapCardProps) {
         {/* Completed banner */}
         {isCompleted && (
           <div style={{
-            background: "rgba(236,184,165,0.12)",
-            border: "1px solid rgba(236,184,165,0.2)",
+            background: "rgba(9,188,138,0.1)",
+            border: "1px solid rgba(9,188,138,0.2)",
             borderRadius: "8px",
             padding: "8px 12px",
             marginBottom: "12px",
             fontSize: "12px",
-            color: "#ecb8a5",
+            color: "#09bc8a",
             fontWeight: 600,
             display: "flex",
             alignItems: "center",
@@ -178,14 +176,14 @@ export default function RoadmapCard({ roadmap }: RoadmapCardProps) {
             <span key={i} style={{
               fontSize: "12px",
               background: isCompleted
-                ? "rgba(236,184,165,0.1)"
-                : "rgba(228,154,176,0.1)",
-              color: isCompleted ? "#ecb8a5" : "#e49ab0",
+                ? "rgba(9,188,138,0.1)"
+                : "rgba(117,221,221,0.08)",
+              color: isCompleted ? "#09bc8a" : "#75dddd",
               padding: "3px 10px",
               borderRadius: "100px",
               border: isCompleted
-                ? "1px solid rgba(236,184,165,0.2)"
-                : "1px solid rgba(228,154,176,0.15)"
+                ? "1px solid rgba(9,188,138,0.2)"
+                : "1px solid rgba(117,221,221,0.15)"
             }}>
               {skill}
             </span>

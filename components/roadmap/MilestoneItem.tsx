@@ -126,11 +126,20 @@ export default function MilestoneItem({ milestone, onToggle }: MilestoneItemProp
                         gap: "10px",
                         padding: "8px 12px",
                         borderRadius: "8px",
-                        background: "rgba(255,255,255,0.03)",
-                        border: "1px solid var(--border)",
+                        background: "rgba(9,188,138,0.05)",
+                        border: "1px solid rgba(9,188,138,0.15)",
                         textDecoration: "none",
                         transition: "all 0.2s"
                       }}
+                      onMouseEnter={e => {
+                        (e.currentTarget as HTMLAnchorElement).style.background = "rgba(9,188,138,0.12)"
+                          ; (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(9,188,138,0.3)"
+                      }}
+                      onMouseLeave={e => {
+                        (e.currentTarget as HTMLAnchorElement).style.background = "rgba(9,188,138,0.05)"
+                          ; (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(9,188,138,0.15)"
+                      }}
+
                     >
                       <span style={{
                         fontSize: "11px",
@@ -142,7 +151,7 @@ export default function MilestoneItem({ milestone, onToggle }: MilestoneItemProp
                       }}>
                         {resource.type}
                       </span>
-                      <span style={{ fontSize: "13px", color: "var(--blue-bright)" }}>
+                      <span style={{ fontSize: "13px", color: "#75dddd" }}>
                         {resource.title}
                       </span>
                     </a>

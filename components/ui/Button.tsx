@@ -40,9 +40,9 @@ export default function Button({
 
   const variants: Record<string, React.CSSProperties> = {
     primary: {
-      background: "linear-gradient(135deg, #904c77, #7a3d63)",
+      background: "linear-gradient(135deg, #09bc8a, #007a5e)",
       color: "#fff",
-      boxShadow: "0 4px 20px rgba(144,76,119,0.4)"
+      boxShadow: "0 4px 20px rgba(9,188,138,0.4)"
     },
     secondary: {
       background: "transparent",
@@ -66,23 +66,23 @@ export default function Button({
         if (disabled || isLoading) return
         if (variant === "primary") {
           (e.currentTarget as HTMLButtonElement).style.transform = "translateY(-2px)"
-          ;(e.currentTarget as HTMLButtonElement).style.boxShadow = "0 8px 30px rgba(144,76,119,0.6)"
+            ; (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 8px 30px rgba(9,188,138,0.6)"
         }
         if (variant === "secondary") {
           (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--accent)"
-          ;(e.currentTarget as HTMLButtonElement).style.color = "var(--text-primary)"
-          ;(e.currentTarget as HTMLButtonElement).style.background = "rgba(228,154,176,0.08)"
+            ; (e.currentTarget as HTMLButtonElement).style.color = "var(--text-primary)"
+            ; (e.currentTarget as HTMLButtonElement).style.background = "rgba(9,188,138,0.08)"
         }
       }}
       onMouseLeave={e => {
         if (variant === "primary") {
           (e.currentTarget as HTMLButtonElement).style.transform = "translateY(0)"
-          ;(e.currentTarget as HTMLButtonElement).style.boxShadow = "0 4px 20px rgba(144,76,119,0.4)"
+            ; (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 4px 20px rgba(9,188,138,0.4)"
         }
         if (variant === "secondary") {
           (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--border)"
-          ;(e.currentTarget as HTMLButtonElement).style.color = "var(--text-secondary)"
-          ;(e.currentTarget as HTMLButtonElement).style.background = "transparent"
+            ; (e.currentTarget as HTMLButtonElement).style.color = "var(--text-secondary)"
+            ; (e.currentTarget as HTMLButtonElement).style.background = "transparent"
         }
       }}
     >

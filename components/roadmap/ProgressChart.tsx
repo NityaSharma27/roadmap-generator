@@ -58,16 +58,39 @@ export default function ProgressChart({ milestones }: ProgressChartProps) {
           <XAxis dataKey="name" tick={{ fill: "#475569", fontSize: 11 }} axisLine={false} tickLine={false} />
           <YAxis tick={{ fill: "#475569", fontSize: 11 }} axisLine={false} tickLine={false} />
           <Tooltip
+            cursor={{ fill: "rgba(9,188,138,0.05)" }}
+            position={{ y: -80 }}
             contentStyle={{
-              background: "var(--navy-card)",
-              border: "1px solid var(--border)",
-              borderRadius: "8px",
-              color: "var(--text-primary)",
-              fontSize: "12px"
+              background: "#172a3a",
+              border: "1px solid rgba(9,188,138,0.4)",
+              borderRadius: "10px",
+              color: "#e8f8f5",
+              fontSize: "12px",
+              padding: "10px 14px",
+              boxShadow: "0 4px 20px rgba(0,0,0,0.4)"
+            }}
+            labelStyle={{
+              color: "#09bc8a",
+              fontWeight: 700,
+              marginBottom: "4px",
+              display: "block"
+            }}
+            itemStyle={{
+              color: "#75dddd"
             }}
           />
-          <Bar dataKey="hours" fill="rgba(59,130,246,0.2)" name="Total Hours" radius={[4, 4, 0, 0]} />
-          <Bar dataKey="completed" fill="#3b82f6" name="Completed" radius={[4, 4, 0, 0]} />
+          <Bar
+            dataKey="hours"
+            fill="rgba(80,137,145,0.3)"
+            name="Total Hours"
+            radius={[4, 4, 0, 0]}
+          />
+          <Bar
+            dataKey="completed"
+            fill="#09bc8a"
+            name="Completed"
+            radius={[4, 4, 0, 0]}
+          />
         </BarChart>
       </ResponsiveContainer>
     </div>

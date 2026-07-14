@@ -9,13 +9,13 @@ export default function Navbar() {
 
   return (
     <nav style={{
-  borderBottom: "1px solid rgba(228,154,176,0.15)",
-  background: "rgba(26,13,24,0.9)",
-  backdropFilter: "blur(16px)",
-  position: "sticky",
-  top: 0,
-  zIndex: 50
-}}>
+      borderBottom: "1px solid rgba(9,188,138,0.2)",
+      background: "rgba(25, 150, 106, 0.2)",
+      backdropFilter: "blur(16px)",
+      position: "sticky",
+      top: 0,
+      zIndex: 50
+    }}>
       <div style={{
         maxWidth: "1100px",
         margin: "0 auto",

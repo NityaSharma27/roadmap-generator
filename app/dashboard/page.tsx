@@ -125,7 +125,12 @@ export default function DashboardPage() {
                 Paste a job description to generate your first personalized roadmap
               </p>
               <Link href="/roadmap/new">
-                <button className="glow-button px-8 py-3 text-sm">
+                <button className="glow-button" style={{
+                  padding: "14px 32px",
+                  fontSize: "15px",
+                  fontWeight: 600,
+                  borderRadius: "12px"
+                }}>
                   Generate My First Roadmap →
                 </button>
               </Link>
